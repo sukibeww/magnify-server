@@ -5,8 +5,8 @@ const passport_Linkedin = async passport => {
   passport.use(
     new LinkedInStrategy(
       {
-        clientID: '81jde443a46v56', //to move to .env
-        clientSecret: 'y9JPimZcX6UlXJKw',
+        clientID: process.env.clientID, //to move to .env
+        clientSecret: process.env.clientSecret,
         callbackURL: 'http://localhost:3000/auth/linkedin/callback',
         scope: ['r_emailaddress', 'r_liteprofile']
       },
@@ -14,6 +14,7 @@ const passport_Linkedin = async passport => {
         // asynchronous verification, for effect...
         // console.log(profile)
         process.nextTick(function() {
+          console.log(profile)
           const searchQuery = {
             email: profile.emails[0].value
           }
@@ -22,7 +23,7 @@ const passport_Linkedin = async passport => {
             displayName: profile.displayName,
             email: profile.emails[0].value,
             linkedin_id: profile.id,
-            photos: profile.photos
+            profile_image: profile.photos[0].value
           }
           const option = {
             //https://mongoosejs.com/docs/api.html#model_Model.findOneAndUpdate

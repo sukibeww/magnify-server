@@ -5,7 +5,7 @@ const passport = require('passport')
 const passport_Linkedin = require('../config/passport')
 passport_Linkedin(passport)
 
-router.get('/', function(req, res) {
+router.get('/', passport.authenticate('linkedin'), function(req, res) {
   res.send('dashboard') //for testing
 })
 
@@ -19,7 +19,7 @@ router.get(
       res.send({
         email: req.user.email,
         displayName: req.user.displayName,
-        photo: req.user.photo
+        profile_image: req.user.profile_image
       })
     } else {
       res.send(err)
