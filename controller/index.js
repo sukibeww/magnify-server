@@ -1,3 +1,3 @@
-const index = async (req, res) => {};
+const index = async (req, res) => {}
 
-module.exports = { index };
+module.exports = { index }
