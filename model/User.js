@@ -6,17 +6,18 @@ const UserSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  linkedin_id: {
-    type: String,
-    required: true
-  },
   displayName: {
     type: String,
     required: true
   },
   profile_image: {
     type: String
-  }
+  },
+  category: [
+    {
+      type: String
+    }
+  ]
 })
 
 module.exports = mongoose.model('User', UserSchema)
