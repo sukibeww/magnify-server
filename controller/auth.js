@@ -1,3 +1,5 @@
+const HOME = process.env.HOMEPAGE
+
 const login = (req, res) => {
   if (req.user) {
     res.json(req.user)
@@ -5,8 +7,10 @@ const login = (req, res) => {
 }
 
 const logout = async (req, res) => {
-  req.logout()
-  res.redirect(HOME)
+  req.session.destroy(function() {
+    req.logout()
+    res.redirect(HOME)
+  })
 }
 
 module.exports = { login, logout }
