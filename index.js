@@ -17,7 +17,7 @@ app.use(
 
 const session = require('express-session')
 const session_setting = session({
-  secret: 'mosmos',
+  secret: 'magnify159088',
   resave: false,
   saveUninitialized: true,
   cookie: { maxAge: 60000 }
