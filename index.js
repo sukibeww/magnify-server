@@ -20,7 +20,7 @@ const session_setting = session({
   secret: 'magnify159088',
   resave: false,
   saveUninitialized: true,
-  cookie: { maxAge: 60000 }
+  cookie: { maxAge: 1000000 }
 })
 
 app.use(morgan('tiny'))
@@ -30,6 +30,7 @@ app.use(session_setting)
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(require('./routes/survey'))
 app.use(require('./routes/auth'))
 
 app.listen(process.env.PORT || 3000, console.log('Listening on Port'))

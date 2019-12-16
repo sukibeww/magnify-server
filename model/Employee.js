@@ -21,6 +21,14 @@ const EmployeeSchema = new mongoose.Schema({
       type: String
     }
   ],
+  current: {
+    current_section: {
+      type: String
+    },
+    current_count: {
+      type: Number
+    }
+  },
   survey: {
     surveyA: [
       {
@@ -33,9 +41,11 @@ const EmployeeSchema = new mongoose.Schema({
       }
     ],
     surveyC: [
-      {
-        type: String
-      }
+      [
+        {
+          type: String
+        }
+      ]
     ],
     surveyD: [
       {
