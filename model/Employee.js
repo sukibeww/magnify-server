@@ -21,22 +21,22 @@ const EmployeeSchema = new mongoose.Schema({
   survey: {
     surveyA: [
       {
-        type: Number
+        type: String
       }
     ],
     surveyB: [
       {
-        type: Number
+        type: String
       }
     ],
     surveyC: [
       {
-        type: Number
+        type: String
       }
     ],
     surveyD: [
       {
-        type: Number
+        type: String
       }
     ]
   }
