@@ -10,7 +10,10 @@ const EmployeeSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  profile_image: {
+  photos: {
+    type: String
+  },
+  linkedin_id: {
     type: String
   },
   category: [

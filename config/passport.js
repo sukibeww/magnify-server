@@ -13,6 +13,7 @@ const passport_Linkedin = async passport => {
         scope: ['r_emailaddress', 'r_liteprofile']
       },
       function(accessToken, refreshToken, profile, done) {
+        console.log(profile)
         process.nextTick(function() {
           const searchQuery = {
             email: profile.emails[0].value
