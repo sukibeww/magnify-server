@@ -22,7 +22,7 @@ const passport_Linkedin = async passport => {
             displayName: profile.displayName,
             email: profile.emails[0].value,
             linkedin_id: profile.id,
-            photos: profile.photos[2].value
+            photos: profile.photos[3].value
           }
           const option = {
             new: true,
