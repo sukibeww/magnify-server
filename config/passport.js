@@ -13,6 +13,7 @@ const passport_Linkedin = async passport => {
         scope: ['r_emailaddress', 'r_liteprofile']
       },
       function(accessToken, refreshToken, profile, done) {
+        console.log(profile)
         process.nextTick(function() {
           const searchQuery = {
             email: profile.emails[0].value
@@ -21,7 +22,7 @@ const passport_Linkedin = async passport => {
             displayName: profile.displayName,
             email: profile.emails[0].value,
             linkedin_id: profile.id,
-            photos: profile.photos[0].value
+            photos: profile.photos[2].value
           }
           const option = {
             new: true,
