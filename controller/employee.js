@@ -1,4 +1,17 @@
 const Employee = require('../model/Employee')
+const HOME = process.env.HOMEPAGE
+
+const login = (req, res) => {
+  if (req.user) {
+    res.json(req.user)
+  }
+}
+const logout = async (req, res) => {
+  req.session.destroy(function() {
+    req.logout()
+    res.redirect(HOME)
+  })
+}
 
 const updateEmployee = async (req, res, next) => {
   const { editedEmployee } = req.body
@@ -12,4 +25,30 @@ const updateEmployee = async (req, res, next) => {
   }
 }
 
-module.exports = { updateEmployee } 
+const saveSurvey = async (req, res, next) => {
+  const { surveyA, surveyB, surveyC, surveyD, count, section } = req.body
+
+  const survey = {
+    surveyA,
+    surveyB,
+    surveyC,
+    surveyD
+  }
+  const current = { current_count: count || 1, current_section: section || 'A' }
+  const searchQuery = {
+    _id: req.user._id
+  }
+  const updates = {
+    survey: survey || {},
+    current: current
+  }
+  await Employee.findOneAndUpdate(searchQuery, updates, function(err, user) {
+    if (err) {
+      res.status(404).send('something went wrong')
+    } else {
+      res.status(200).send('save succesfully')
+    }
+  })
+}
+
+module.exports = { login, logout , updateEmployee ,saveSurvey } 

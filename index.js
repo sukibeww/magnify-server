@@ -29,8 +29,6 @@ app.use(express.urlencoded({ extended: false }))
 app.use(session_setting)
 app.use(passport.initialize())
 app.use(passport.session())
-
-app.use(require('./routes/survey'))
 app.use(require('./routes/auth'))
 app.use(require('./routes/employee'))
 

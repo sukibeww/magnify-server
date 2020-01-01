@@ -3,7 +3,7 @@ const User = require('../model/Employee')
 
 const SERVER = process.env.SERVER
 
-const passport_Linkedin = async passport => {
+const employee_Linkedin = async passport => {
   passport.use(
     new LinkedInStrategy(
       {
@@ -13,7 +13,6 @@ const passport_Linkedin = async passport => {
         scope: ['r_emailaddress', 'r_liteprofile']
       },
       function(accessToken, refreshToken, profile, done) {
-        console.log(profile)
         process.nextTick(function() {
           const searchQuery = {
             email: profile.emails[0].value
@@ -53,4 +52,4 @@ const passport_Linkedin = async passport => {
   })
 }
 
-module.exports = passport_Linkedin
+module.exports = employee_Linkedin
