@@ -21,6 +21,7 @@ const EmployeeSchema = new mongoose.Schema({
       type: String
     }
   ],
+  bio: String,
   current: {
     current_section: {
       type: String
