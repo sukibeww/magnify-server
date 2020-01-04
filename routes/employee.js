@@ -6,6 +6,7 @@ passport_Linkedin(passport)
 const { updateEmployee } = require('../controller/employee')
 const { ensureAuthenticated } = require('../helper/auth')
 
+router.post('/employee/survey', ensureAuthenticated, saveSurvey)
 router.put('/employee/update', ensureAuthenticated, updateEmployee)
 
 module.exports = router

@@ -31,8 +31,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.use(require('./routes/result'))
-app.use(require('./routes/survey'))
-app.use(require('./routes/auth'))
 app.use(require('./routes/employee'))
+app.use(require('./routes/auth'))
 
 app.listen(process.env.PORT || 3000, console.log('Listening on Port'))
