@@ -23,14 +23,13 @@ const session_setting = session({
   cookie: { maxAge: 1000000 }
 })
 
-app.use(morgan('tiny'))
+app.use(morgan('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(session_setting)
 app.use(passport.initialize())
 app.use(passport.session())
-
-app.use(require('./routes/survey'))
 app.use(require('./routes/auth'))
+app.use(require('./routes/employee'))
 
 app.listen(process.env.PORT || 3000, console.log('Listening on Port'))

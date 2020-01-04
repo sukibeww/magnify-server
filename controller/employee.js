@@ -1,4 +1,29 @@
 const Employee = require('../model/Employee')
+const HOME = process.env.HOMEPAGE
+
+const login = (req, res) => {
+  if (req.user) {
+    res.json(req.user)
+  }
+}
+const logout = async (req, res) => {
+  req.session.destroy(function() {
+    req.logout()
+    res.redirect(HOME)
+  })
+}
+
+const updateEmployee = async (req, res, next) => {
+  const { editedEmployee } = req.body
+  if (editedEmployee){
+    await Employee.findByIdAndUpdate(editedEmployee._id, editedEmployee)
+    res.send("Updated")
+  }
+  else{
+    console.log("error")
+    res.send("404: Update not found")
+  }
+}
 
 const saveSurvey = async (req, res, next) => {
   const { surveyA, surveyB, surveyC, surveyD, count, section } = req.body
@@ -25,4 +50,5 @@ const saveSurvey = async (req, res, next) => {
     }
   })
 }
-module.exports = { saveSurvey }
+
+module.exports = { login, logout , updateEmployee ,saveSurvey } 

@@ -2,9 +2,8 @@ const express = require('express')
 const router = express.Router()
 
 const passport = require('passport')
-const passport_Linkedin = require('../config/passport')
-passport_Linkedin(passport)
-const { login, logout } = require('../controller/auth')
+const employee_Linkedin = require('../config/employee_passport')
+employee_Linkedin(passport)
 const HOME = process.env.HOMEPAGE
 
 router.get('/auth/linkedin', passport.authenticate('linkedin'))
@@ -18,8 +17,5 @@ router.get(
     res.redirect(HOME)
   }
 )
-
-router.get('/login', login)
-router.get('/logout', logout)
 
 module.exports = router
