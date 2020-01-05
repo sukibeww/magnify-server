@@ -1,11 +1,12 @@
 const express = require('express')
 const router = express.Router()
+const HOME = process.env.HOMEPAGE
 
 const passport = require('passport')
-const passport_Linkedin = require('../config/passport')
-passport_Linkedin(passport)
+const employee_Linkedin = require('../config/employee_passport')
+employee_Linkedin(passport)
+
 const { login, logout } = require('../controller/auth')
-const HOME = process.env.HOMEPAGE
 
 router.get('/auth/linkedin', passport.authenticate('linkedin'))
 router.get(

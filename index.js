@@ -30,7 +30,6 @@ app.use(session_setting)
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.use(require('./routes/result'))
 app.use(require('./routes/employee'))
 app.use(require('./routes/auth'))
 
