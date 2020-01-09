@@ -74,7 +74,7 @@ const employee_Linkedin = async passport => {
   )
 
   passport.serializeUser((user, done) => {
-    done(null, { id: user.userData._id, type: usertype })
+    done(null, { id: user.userData._id, type: user.type })
   })
 
   passport.deserializeUser((user, done) => {
