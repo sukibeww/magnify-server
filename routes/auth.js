@@ -8,7 +8,9 @@ employee_Linkedin(passport)
 
 const { login, logout } = require('../controller/auth')
 
-router.get('/auth/linkedin', passport.authenticate('linkedin'))
+router.get('/auth/linkedin/login/:type', function(req, res, next) {
+  passport.authenticate('linkedin', { state: req.params.type })(req, res, next)
+})
 router.get(
   '/auth/linkedin/callback',
   passport.authenticate('linkedin', {
