@@ -15,6 +15,10 @@ const EmployerSchema = new mongoose.Schema({
   },
   linkedin_id: {
     type: String
+  },
+  type: {
+    type: String,
+    default: 'Employer'
   }
 })
 
