@@ -19,7 +19,17 @@ const EmployerSchema = new mongoose.Schema({
   type: {
     type: String,
     default: 'Employer'
+  },
+  companyName : {
+    type: String
+  },
+  address: {
+    type: String,
+  },
+  creditCardInfo: {
+    type: String
   }
 })
 
 module.exports = mongoose.model('Employer', EmployerSchema)
+
