@@ -51,7 +51,8 @@ const employee_Linkedin = async passport => {
               displayName: profile.displayName,
               email: profile.emails[0].value,
               linkedin_id: profile.id,
-              photos: profile.photos[3].value
+              photos: profile.photos[3].value,
+              type: 'Employer'
             }
             const option = {
               new: true,
@@ -87,7 +88,7 @@ const employee_Linkedin = async passport => {
     } else {
       console.log('employer')
       console.log(user)
-      Employee.findById(user.id, (err, user) => {
+      Employer.findById(user.id, (err, user) => {
         done(err, user)
       })
     }
