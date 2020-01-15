@@ -11,7 +11,6 @@ const {
 router.put('/employee/update', ensureAuthenticated, updateEmployee)
 router.post('/employee/survey', ensureAuthenticated, saveSurvey)
 
-router.get('/employee/result', ensureAuthenticated, findResult)
 router.get('/employee/:category', ensureAuthenticated, getByCategory)
 router.post('/employee/result', ensureAuthenticated, createResult)
 
