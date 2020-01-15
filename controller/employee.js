@@ -37,4 +37,36 @@ const saveSurvey = async (req, res, next) => {
   })
 }
 
-module.exports = { updateEmployee, saveSurvey }
+const createResult = async (req, res, next) => {
+  const { surveyA, surveyB, surveyC, surveyD } = req.body
+
+  const searchQuery = {
+    _id: req.user._id
+  }
+  const updates = {
+    score: {
+      kinetic: surveyA,
+      productivity: surveyB,
+      visual: surveyC,
+      optimism: 200 - (surveyA + surveyB),
+      social: surveyD,
+      created: Date.now()
+    }
+  }
+  const option = {
+    new: true,
+    upsert: true
+  }
+  await Employee.findOneAndUpdate(searchQuery, updates, option, function(
+    err,
+    user
+  ) {
+    if (err) {
+      res.status(404).send(undefined)
+    } else {
+      res.json({ score: user.score })
+    }
+  })
+}
+
+module.exports = { updateEmployee, saveSurvey, createResult }
