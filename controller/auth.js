@@ -8,7 +8,6 @@ const login = (req, res) => {
 const logout = async (req, res) => {
   req.session.destroy(function() {
     req.logout()
-    res.redirect(HOME)
   })
 }
 
