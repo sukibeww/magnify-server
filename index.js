@@ -20,6 +20,7 @@ const session_setting = session({
   secret: 'magnify159088',
   resave: false,
   saveUninitialized: true,
+  rolling: true,
   cookie: { maxAge: 1000000 }
 })
 

@@ -53,6 +53,27 @@ const EmployeeSchema = new mongoose.Schema({
         type: String
       }
     ]
+  },
+  score: {
+    kinetic: {
+      type: Number
+    },
+    productivity: {
+      type: Number
+    },
+    visual: {
+      type: Number
+    },
+    optimism: {
+      type: Number
+    },
+    social: {
+      type: Number
+    },
+    created: {
+      type: String,
+      default: Date.now
+    }
   }
 })
 

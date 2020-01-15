@@ -1,8 +1,12 @@
 const express = require('express')
 const router = express.Router()
 const { ensureAuthenticated } = require('../helper/auth')
-const { updateEmployee, saveSurvey, getByCategory } = require('../controller/employee')
-const { createResult, findResult } = require('../controller/result')
+const {
+  updateEmployee,
+  saveSurvey,
+  createResult,
+  getByCategory
+} = require('../controller/employee')
 
 router.put('/employee/update', ensureAuthenticated, updateEmployee)
 router.post('/employee/survey', ensureAuthenticated, saveSurvey)
