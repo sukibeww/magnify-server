@@ -11,6 +11,19 @@ const updateEmployee = async (req, res, next) => {
   }
 }
 
+const getByCategory = async (req, res, next ) => {
+  console.log(req.params.category)
+  if(req.params.category){
+    await Employee.find({category: req.params.category}, function(err, result){
+      if(err){
+        res.status(400).send("something went wrong")
+      } else{
+        res.send(result)
+      }
+    })
+  }
+}
+
 const saveSurvey = async (req, res, next) => {
   const { surveyA, surveyB, surveyC, surveyD, count, section } = req.body
 
@@ -37,4 +50,4 @@ const saveSurvey = async (req, res, next) => {
   })
 }
 
-module.exports = { updateEmployee, saveSurvey }
+module.exports = { updateEmployee, saveSurvey , getByCategory }
