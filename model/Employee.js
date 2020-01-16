@@ -71,8 +71,7 @@ const EmployeeSchema = new mongoose.Schema({
       type: Number
     },
     rating: {
-      type: Number,
-      default: (kinetic + productivity + visual + optimism + social) / 5
+      type: Number
     },
     created: {
       type: String,
