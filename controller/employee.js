@@ -66,7 +66,6 @@ const createResult = async (req, res, next) => {
       visual: surveyC,
       optimism: 200 - (surveyA + surveyB),
       social: surveyD,
-      rating: (200 + surveyC + surveyD) / 5,
       created: Date.now()
     } //fake
   }
