@@ -70,6 +70,9 @@ const EmployeeSchema = new mongoose.Schema({
     social: {
       type: Number
     },
+    rating: {
+      type: Number
+    },
     created: {
       type: String,
       default: Date.now
