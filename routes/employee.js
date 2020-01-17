@@ -5,13 +5,13 @@ const {
   updateEmployee,
   saveSurvey,
   createResult,
-  getByCategory
+  getDelegates
 } = require('../controller/employee')
 
 router.put('/employee/update', ensureAuthenticated, updateEmployee)
 router.post('/employee/survey', ensureAuthenticated, saveSurvey)
 
-router.get('/employee/:category', ensureAuthenticated, getByCategory)
+router.get('/employee/delegates', ensureAuthenticated, getDelegates)
 router.post('/employee/result', ensureAuthenticated, createResult)
 
 module.exports = router
