@@ -1,4 +1,4 @@
-const Vacancy = require('./Vacancy');
+const Vacancy = require('../../models/Vacancy');
 
 describe('Vacancy', () => {
 
