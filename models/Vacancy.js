@@ -10,9 +10,9 @@ const VacancySchema = Schema({
     type: String,
     required: true
   },
-  creatorId: {
-    type: Number,
-    required: true
+  creator: {
+    type: Schema.Types.ObjectId,
+    ref: 'Employer'
   },
   salary: {
     type: String,
