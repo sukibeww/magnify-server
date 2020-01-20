@@ -10,6 +10,37 @@ const getVacancies = async (req, res) => {
   }
 }
 
+const getVacanciesOfCompany = async (req, res) => {
+  console.log(req.params.companyId)
+  await Vacancy
+  .find()
+  .where("creator").equals(req.params.companyId)
+  .exec(function(
+    err,
+    result
+  ) {
+    if (err) {
+      res.status(400).send(err)
+    } else {
+      console.log(result)
+      res.status(200).send(result)
+    }
+  })
+}
+
+const createVacancies = async (req, res) => {
+  const { newVacancy } = req.body
+  try {
+    const vacancy = await Vacancy.create(newVacancy)
+    res.status(200).send(vacancy)
+  }
+  catch(error){
+    res.status(500).send(error)
+  }
+}
+
 module.exports = {
-  getVacancies
+  getVacancies,
+  createVacancies,
+  getVacanciesOfCompany
 }
