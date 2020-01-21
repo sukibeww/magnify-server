@@ -1,4 +1,4 @@
-const Employee = require('../model/Employee')
+const Employee = require('../models/Employee')
 
 const updateEmployee = async (req, res, next) => {
   const { editedEmployee } = req.body

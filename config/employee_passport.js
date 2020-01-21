@@ -1,6 +1,6 @@
 const LinkedInStrategy = require('passport-linkedin-oauth2').Strategy
-const Employee = require('../model/Employee')
-const Employer = require('../model/Employer')
+const Employee = require('../models/Employee')
+const Employer = require('../models/Employer')
 
 const SERVER = process.env.SERVER
 
