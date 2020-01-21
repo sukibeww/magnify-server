@@ -11,7 +11,6 @@ const getVacancies = async (req, res) => {
 }
 
 const getVacanciesOfCompany = async (req, res) => {
-  console.log(req.params.companyId)
   await Vacancy
   .find()
   .where("creator").equals(req.params.companyId)
@@ -22,10 +21,23 @@ const getVacanciesOfCompany = async (req, res) => {
     if (err) {
       res.status(400).send(err)
     } else {
-      console.log(result)
       res.status(200).send(result)
     }
   })
+}
+
+const deleteVacancy = async (req, res) => {
+  const {vacancyId} = req.params
+  try{
+    await Vacancy.findByIdAndDelete(vacancyId, (err, item)=> {
+      if(item){
+        res.json(item)
+      }
+    })
+  }
+  catch(error){
+    res.status(500).send(error)
+  }
 }
 
 const createVacancies = async (req, res) => {
@@ -45,5 +57,6 @@ const createVacancies = async (req, res) => {
 module.exports = {
   getVacancies,
   createVacancies,
-  getVacanciesOfCompany
+  getVacanciesOfCompany,
+  deleteVacancy
 }
