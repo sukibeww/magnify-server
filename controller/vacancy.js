@@ -26,6 +26,19 @@ const getVacanciesOfCompany = async (req, res) => {
   })
 }
 
+const editVacancy = async (req, res) => {
+  if(req.body){
+    try{
+      await Vacancy.findByIdAndUpdate(req.body._id, req.body)
+      res.send("Updated")
+    }
+    catch(error){
+      res.status(500).send(error)
+    }
+  }
+  
+}
+
 const deleteVacancy = async (req, res) => {
   const {vacancyId} = req.params
   try{
@@ -58,5 +71,6 @@ module.exports = {
   getVacancies,
   createVacancies,
   getVacanciesOfCompany,
-  deleteVacancy
+  deleteVacancy,
+  editVacancy
 }
