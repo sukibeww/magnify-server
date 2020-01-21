@@ -31,8 +31,11 @@ const getVacanciesOfCompany = async (req, res) => {
 const createVacancies = async (req, res) => {
   const { newVacancy } = req.body
   try {
-    const vacancy = await Vacancy.create(newVacancy)
-    res.status(200).send(vacancy)
+    await Vacancy.create(newVacancy, (err, item)=>{
+      if(item){
+        res.json(item)
+      }
+    })
   }
   catch(error){
     res.status(500).send(error)
