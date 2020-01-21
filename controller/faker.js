@@ -45,7 +45,7 @@ function generateUsers() {
   return users
 }
 
-const fake = async (req, res) => {
+const fakeUser = async (req, res) => {
   let data = generateUsers()
   let count = 1
   data.forEach(profile => {
@@ -68,4 +68,4 @@ const fake = async (req, res) => {
   })
 }
 
-module.exports = { fake }
+module.exports = { fakeUser }

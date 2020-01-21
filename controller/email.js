@@ -15,17 +15,22 @@ const sendEmail = (req, res) => {
         pass: process.env.password // generated ethereal password
       }
     })
-
-    // send mail with defined transport object
-    let info = await transporter.sendMail({
-      from: 'mos311063@gmail.com', // sender address
-      to: 'sukialiong@gmail.com', // list of receivers
-      subject: 'Magnify', // Subject line
-      text: 'Invitation', // plain text body
-      html: `<h1>Hello User</h1><p>
-      <You have been invite to interview on</p>` // html body
-    })
-    res.send('Email Send')
+    if (req.body.email) {
+      const receiverEmail = req.body.email
+      // send mail with defined transport object
+      let info = await transporter.sendMail({
+        from: 'magnifyteam@gmail.com', // sender address
+        to: `${receiverEmail}`, // list of receivers
+        subject: 'Magnify', // Subject line
+        text: 'Invitation', // plain text body
+        html: `<h1>Hello User</h1>
+        <p>You have been invite to interview on</p>` // html body
+      })
+      console.log(info)
+      res.send('Email Send')
+    } else {
+      res.status(404).send('No Email')
+    }
   }
   main().catch(console.error)
 }
