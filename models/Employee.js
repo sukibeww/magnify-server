@@ -16,6 +16,9 @@ const EmployeeSchema = new mongoose.Schema({
   linkedin_id: {
     type: String
   },
+  salary: {
+    type: String
+  },
   category: [
     {
       type: String
