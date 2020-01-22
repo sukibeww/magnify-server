@@ -31,7 +31,9 @@ const VacancySchema = Schema({
   isOpen: {
     type: Boolean,
     required: true
-  }
+  },
+  employList: Schema.Types.Mixed,
+  pendingList: Schema.Types.Mixed
 })
 
 const Vacancy = mongoose.model('Vacancy', VacancySchema)
