@@ -8,11 +8,11 @@ const { editVacancy, getVacancies, createVacancies, getVacanciesOfCompany ,delet
 TODO: make this authenticated by mocking authentication in the tests
 */
 
-router.get('/vacancies', getVacancies)
-router.get('/vacancies/:companyId', getVacanciesOfCompany)
-router.post('/vacancies', createVacancies)
-router.delete('/vacancies/:vacancyId', deleteVacancy)
-router.put('/vacancies/:vacancyId', editVacancy)
+router.get('/vacancies', getVacancies, ensureAuthenticated )
+router.get('/vacancies/:companyId', getVacanciesOfCompany) , ensureAuthenticated
+router.post('/vacancies', createVacancies, ensureAuthenticated)
+router.delete('/vacancies/:vacancyId', deleteVacancy, ensureAuthenticated)
+router.put('/vacancies/:vacancyId', editVacancy, ensureAuthenticated)
 
 
 module.exports = router;
