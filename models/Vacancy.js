@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema
 
 const VacancySchema = Schema({
   title: {
@@ -34,6 +34,6 @@ const VacancySchema = Schema({
   }
 })
 
-const Vacancy = mongoose.model('Vacancy', VacancySchema);
+const Vacancy = mongoose.model('Vacancy', VacancySchema)
 
-module.exports = Vacancy;
+module.exports = Vacancy

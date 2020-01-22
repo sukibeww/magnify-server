@@ -31,9 +31,10 @@ app.use(session_setting)
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(require('./routes/email'))
 app.use(require('./routes/employee'))
 app.use(require('./routes/auth'))
 app.use(require('./routes/employer'))
 app.use(require('./routes/vacancies'))
 
-module.exports = app;
+module.exports = app
