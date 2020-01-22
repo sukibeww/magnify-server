@@ -6,7 +6,6 @@ const getVacancies = async (req, res) => {
     .where({isOpen: true})
     .populate("creator")
     .exec(function(err, result) {
-      console.log(result)
       if (err) {
         res.status(400).send(err)
       } else {
