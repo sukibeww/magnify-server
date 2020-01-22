@@ -3,16 +3,16 @@ const Vacancy = require('../models/Vacancy')
 const getVacancies = async (req, res) => {
   try {
     const vacancies = await Vacancy.find()
-    .where({isOpen: true})
-    .populate("creator")
-    .exec(function(err, result) {
-      console.log(result)
-      if (err) {
-        res.status(400).send(err)
-      } else {
-        res.status(200).send(result)
-      }
-    })
+      .where({ isOpen: true })
+      .populate('creator')
+      .exec(function(err, result) {
+        console.log(result)
+        if (err) {
+          res.status(400).send(err)
+        } else {
+          res.status(200).send(result)
+        }
+      })
   } catch (error) {
     res.status(500).send(error)
   }
@@ -22,6 +22,7 @@ const getVacanciesOfCompany = async (req, res) => {
   await Vacancy.find()
     .where('creator')
     .equals(req.params.companyId)
+    .populate('applicants', 'email displayName photos score category')
     .exec(function(err, result) {
       if (err) {
         res.status(400).send(err)
