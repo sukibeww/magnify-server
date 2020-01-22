@@ -29,7 +29,7 @@ const EmployerSchema = new mongoose.Schema({
   creditCardInfo: {
     type: String
   },
-  desription: {
+  description: {
     type: String
   }
 })
